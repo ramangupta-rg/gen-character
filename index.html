@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Project</title>
+        
+    
+
+    <style>
+        
+        h1{
+            color: brown;
+            text-align: center;
+            text-decoration: underline;
+            font-family: sans-serif;
+        }
+        button{
+            display: block;
+            margin: auto;
+            padding: 15px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+        button:hover{
+            background-color: #3e8e41;
+        }
+        button:active{
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        img{
+            width: 400px;
+            height: 500px;
+            box-shadow: 10px 10px 5px #000;
+            display: block;
+            margin: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <button>Generate Character</button>
+    <h1 class="name"></h1>
+    <img src="" class="char-img" alt="">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            //jquery start
+
+            $("button").on("click", function() {
+                const randomNumber = Math.ceil(Math.random() * 88);
+                $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${randomNumber}.json`,
+                function(data){
+                   
+                    $(".char-img").attr("src", data['image'])
+                    $("h1.name").text(data['name'])
+                })
+            })
+        })
+
+    </script>
+    <br>
+    <hr>
+    <h2><center>RAMAN GUPTA</center></h2>
+    <hr>
+    
+</body>
+</html>
